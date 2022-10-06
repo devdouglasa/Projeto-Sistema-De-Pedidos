@@ -1,0 +1,33 @@
+@model List<ItemPedido>;
+
+@{
+    ViewData["Title"] = "Listar";
+}
+
+<h5>Itens Registrados no pedido:</h5>
+<br>
+<table class="table">
+<thead>
+    <tr>
+        <th>Descrição</th>
+        <th>Valor unitário</th>
+        <th>Quantidade</th>
+    </tr>
+</thead>
+
+<tbody>
+    @foreach (ItemPedido p in Model) {
+        <tr>
+            <td>@p.descricao</td>
+            <td>R$ @p.valor_unitario</td>
+            <td>@p.quantidade</td>
+        </tr>
+    }
+
+</table>
+<p><strong>O valor total do pedido é: R$ @Dados.PedidoAtual.Totalizar()</strong></p>
+</tbody>
+<br>
+<p><a asp-action="Index">Registrar um novo item</a></p>
+
+
